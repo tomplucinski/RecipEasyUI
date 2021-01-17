@@ -7,13 +7,14 @@ import './SignUp.css';
 
 const SignUp = ({ register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     password2: '',
   });
 
-  const { name, email, password, password2 } = formData;
+  const { firstName, lastName, email, password, password2 } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,9 +22,9 @@ const SignUp = ({ register, isAuthenticated }) => {
   const onSubmit = e => {
     e.preventDefault();
     if (password !== password2) {
-      console.log('password does not match', 'danger');
+      console.log('password does not match');
     } else {
-      register({ name, email, password });
+      register({ firstName, lastName, email, password });
     }
   };
 
@@ -33,17 +34,27 @@ const SignUp = ({ register, isAuthenticated }) => {
 
   return (
     <div className="signup-form">
-      <h1 className="large text-primary">Sign Up</h1>
+      <h1 className="large text-primary">Create Your Profile</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Create Your Account
+        <i className="fas fa-user"></i> Create and share your own recipes!
       </p>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
           <input
             type="text"
-            placeholder="Name"
-            name="name"
-            value={name}
+            placeholder="First Name"
+            name="firstName"
+            value={firstName}
+            onChange={e => onChange(e)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Last Name"
+            name="lastName"
+            value={lastName}
             onChange={e => onChange(e)}
             required
           />
@@ -57,10 +68,6 @@ const SignUp = ({ register, isAuthenticated }) => {
             onChange={e => onChange(e)}
             required
           />
-          <small className="form-text">
-            This site uses Gravatar so if you want a profile image, use a
-            Gravatar email
-          </small>
         </div>
         <div className="form-group">
           <input
@@ -84,10 +91,10 @@ const SignUp = ({ register, isAuthenticated }) => {
             required
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Register" />
+        <input type="submit" className="btn btn-primary" value="Create Profile" />
       </form>
       <p className="my-1">
-        Already have an account? <Link to="/login">Sign In</Link>
+        Already have an account? <Link to="/login">Log In</Link>
       </p>
     </div>
   );

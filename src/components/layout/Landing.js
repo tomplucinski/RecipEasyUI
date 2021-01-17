@@ -14,7 +14,7 @@ const Landing = () => {
           </p>
           <div className="buttons">
             <Link to="/signup" className="btn btn-primary">
-              Sign Up
+              Create Profile
             </Link>
             <Link to="/login" className="btn btn-light">
               Login
