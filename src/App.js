@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing'
+import Dashboard from "./components/layout/Dashboard";
 import PrivateRoute from './components/routing/PrivateRoute';
-import SignUp from './components/auth/SignUp/SignUp';
-
+import Register from './components/auth/Register/Register';
 // // Redux
 import { Provider } from 'react-redux';
 import store from './store';
-import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
+import { loadUser } from './actions/auth';
 
 import './App.css';
 
@@ -30,8 +30,8 @@ const App = () => {
           <Navbar />
           <Route exact path="/" component={Landing} />
           <Switch>
-            <Route exact path="/signup" component={SignUp} />
-            <PrivateRoute exact path="/dashboard" />
+            <Route exact path="/signup" component={Register} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
           </Switch>
         </div>
       </Router>

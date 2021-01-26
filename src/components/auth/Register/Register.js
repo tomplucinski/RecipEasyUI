@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { register } from '../../../actions/auth';
 
-import './SignUp.css';
+import './Register.css';
 
-const SignUp = ({ register, isAuthenticated }) => {
+const Register = ({ register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -104,4 +104,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { register })(SignUp);
+export default connect(mapStateToProps, { register })(Register);

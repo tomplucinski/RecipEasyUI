@@ -1,6 +1,7 @@
 import {
-    USER_LOADED,
-    AUTH_ERROR
+    REGISTER_SUCCESS,
+    AUTH_ERROR,
+    USER_LOADED
   } from '../actions/types';
   
   const initialState = {
@@ -16,11 +17,19 @@ import {
     switch (type) {
 
       case USER_LOADED:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        user: payload,
+      };
+
+      case REGISTER_SUCCESS:
         return {
           ...state,
+          ...payload,
           isAuthenticated: true,
-          loading: false,
-          user: payload,
+          loading: false
         };
         
       case AUTH_ERROR:
