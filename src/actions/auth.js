@@ -6,14 +6,13 @@ import {
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
-export const loadUser = () => async dispatch => {
+export const loadUser = (id) => async dispatch => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
 
   try {
-    // update to fetch current user from database
-    const { data } = await axios.get('/api/auth');
+    const { data } = await axios.get(`http://localhost:8096/api/profile/${id}`);
 
     dispatch({
       type: USER_LOADED,
@@ -37,14 +36,13 @@ export const register = ({ firstName, lastName, email, password }) => async disp
 
   try {
     const { data } = await axios.post('http://localhost:8096/register', body, config);
-    
+
     const jwtRequest = {
       email,
       password
     };
     
     const response = await axios.post(' http://localhost:8096/authenticate', jwtRequest)
-    
     localStorage.setItem('token', response.data.token)
     
     dispatch({

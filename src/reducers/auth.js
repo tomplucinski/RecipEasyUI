@@ -25,9 +25,11 @@ import {
       };
 
       case REGISTER_SUCCESS:
+        console.log("REGISTER SUCCESS", state.token, payload)
         return {
           ...state,
-          ...payload,
+          token: localStorage.getItem('token'),
+          user: payload,
           isAuthenticated: true,
           loading: false
         };
