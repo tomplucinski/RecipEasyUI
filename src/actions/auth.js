@@ -2,7 +2,9 @@ import axios from 'axios';
 import {
   USER_LOADED,
   AUTH_ERROR,
-  REGISTER_SUCCESS
+  REGISTER_SUCCESS,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -42,7 +44,7 @@ export const register = ({ firstName, lastName, email, password }) => async disp
       password
     };
     
-    const response = await axios.post(' http://localhost:8096/authenticate', jwtRequest)
+    const response = await axios.post('http://localhost:8096/authenticate', jwtRequest)
     localStorage.setItem('token', response.data.token)
     
     dispatch({
@@ -52,5 +54,33 @@ export const register = ({ firstName, lastName, email, password }) => async disp
 
   } catch (e) {
     console.log(e)
+  }
+};
+
+export const login = (email, password) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  const body = JSON.stringify({ email, password });
+
+  try {
+    // const { data } = await axios.post('http://localhost:8096/login', body, config)
+
+    console.log("LOGIN SUCCESS")
+
+    // dispatch({
+    //   type: LOGIN_SUCCESS,
+    //   payload: data,
+    // });
+
+    dispatch(loadUser());
+  } catch (err) {
+    console.log(err)
+    dispatch({
+      type: LOGIN_FAIL,
+    });
   }
 };
