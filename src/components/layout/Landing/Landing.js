@@ -10,10 +10,10 @@ const Landing = () => {
         <div className="landing-inner">
           <h1 className="x-large">RecipEasy</h1>
           <p className="lead">
-            Browse recipes or create a profile and add your own touch!
+            Create a profile to browse recipes and share your own with our community!
           </p>
           <div className="buttons">
-            <Link to="/signup" className="btn btn-primary">
+            <Link to="/register" className="btn btn-primary">
               Create Profile
             </Link>
             <Link to="/login" className="btn btn-light">

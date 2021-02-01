@@ -93,9 +93,6 @@ const Register = ({ register, isAuthenticated }) => {
         </div>
         <input type="submit" className="btn btn-primary" value="Create Profile" />
       </form>
-      <p className="my-1">
-        Already have an account? <Link to="/login">Log In</Link>
-      </p>
     </div>
   );
 };

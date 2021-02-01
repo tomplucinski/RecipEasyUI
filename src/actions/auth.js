@@ -4,7 +4,9 @@ import {
   AUTH_ERROR,
   REGISTER_SUCCESS,
   LOGIN_SUCCESS,
-  LOGIN_FAIL
+  LOGIN_FAIL,
+  REGISTER_FAIL,
+  LOGOUT
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -14,7 +16,7 @@ export const loadUser = (id) => async dispatch => {
   }
 
   try {
-    const { data } = await axios.get(`http://localhost:8096/api/profile/${id}`);
+    const { data } = await axios.get(`http://localhost:8080/api/profile/${id}`);
 
     dispatch({
       type: USER_LOADED,
@@ -38,14 +40,6 @@ export const register = ({ firstName, lastName, email, password }) => async disp
 
   try {
     const { data } = await axios.post('http://localhost:8096/register', body, config);
-
-    const jwtRequest = {
-      email,
-      password
-    };
-    
-    const response = await axios.post('http://localhost:8096/authenticate', jwtRequest)
-    localStorage.setItem('token', response.data.token)
     
     dispatch({
       type: REGISTER_SUCCESS,
@@ -53,6 +47,9 @@ export const register = ({ firstName, lastName, email, password }) => async disp
     });
 
   } catch (e) {
+    dispatch({
+      type: REGISTER_FAIL
+    })
     console.log(e)
   }
 };
@@ -67,20 +64,21 @@ export const login = (email, password) => async dispatch => {
   const body = JSON.stringify({ email, password });
 
   try {
-    // const { data } = await axios.post('http://localhost:8096/login', body, config)
+    const { data } = await axios.post('http://localhost:8096/login', body, config)
 
-    console.log("LOGIN SUCCESS")
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: data,
+    });
 
-    // dispatch({
-    //   type: LOGIN_SUCCESS,
-    //   payload: data,
-    // });
-
-    dispatch(loadUser());
   } catch (err) {
     console.log(err)
     dispatch({
       type: LOGIN_FAIL,
     });
   }
+};
+
+export const logout = () => dispatch => {
+  dispatch({ type: LOGOUT });
 };
