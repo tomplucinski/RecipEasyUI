@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './components/layout/Navbar/Navbar';
-import Landing from './components/layout/Landing/Landing'
-import Dashboard from "./components/layout/Dashboard/Dashboard";
+import Navbar from './components/Navbar/Navbar';
+import Landing from './components/Landing/Landing'
+import Dashboard from "./components/Dashboard/Dashboard";
 import PrivateRoute from './components/routing/PrivateRoute';
-import Register from './components/auth/Register/Register';
-import Login from './components/auth/Login/Login'
+import Register from './components/Register/Register';
+import Login from './components/Login/Login'
 import './App.css';
 
 const App = () => {

@@ -2,7 +2,8 @@ import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { login } from '../../../actions/auth';
+import { login } from '../../actions/auth';
+import './Login.css'
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <Fragment>
+    <div className="login-form">
       <h1 className="large text-primary">Sign In</h1>
       <p className="lead">
         <i className="fas fa-user"></i> Sign Into Your Account
@@ -54,7 +55,7 @@ const Login = ({ login, isAuthenticated }) => {
         </div>
         <input type="submit" className="btn btn-primary" value="Login" />
       </form>
-    </Fragment>
+    </div>
   );
 };
 
