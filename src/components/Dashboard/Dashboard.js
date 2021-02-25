@@ -1,18 +1,26 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
+import Recipe from '../Recipe/Recipe'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Container, Nav } from 'react-bootstrap';
 
-const Dashboard = ({
-  auth: { user }
-}) => {
+const Dashboard = ({ auth: { user } }) => {
+  const state = useState({
+    clicked: false
+  })
 
   return (
-    <div className="container">
-      <h1 className="large text-primary">Dashboard</h1>
-      <p className="lead">
-        <i className="fas fa-user" /> Welcome {user && user.firstName}
-      </p>
-    </div>
+    <Container>
+        <h2 className="text-primary">Welcome {user && user.firstName || "Tom"}</h2>
+      <Nav justify variant="tabs" defaultActiveKey="/home">
+        <Nav.Item>
+          <Nav.Link eventKey="link-0">Add Recipe</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-1">Browse Recipes</Nav.Link>
+        </Nav.Item>
+      </Nav>
+    </Container>
   );
 };
 
