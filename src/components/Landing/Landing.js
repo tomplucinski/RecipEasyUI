@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Landing.css'
 
 
 const Landing = () => {
@@ -12,11 +13,11 @@ const Landing = () => {
           <p className="lead">
             Create a profile to browse recipes and share your own with our community!
           </p>
-          <div className="buttons">
-            <Link to="/register" className="btn btn-primary">
+          <div className="button-group">
+            <Link to="/register" className="margin btn btn-primary">
               Create Profile
             </Link>
-            <Link to="/login" className="btn btn-light">
+            <Link to="/login" className="margin btn btn-light">
               Login
             </Link>
           </div>
