@@ -11,7 +11,7 @@ const Dashboard = ({ auth: { user } }) => {
 
   return (
     <Container>
-        <h2 className="text-primary">Welcome {user && user.firstName || "Tom"}</h2>
+        <h2 className="text-primary">Welcomes {user && user.firstName || "Tom"}</h2>
       <Nav justify variant="tabs" defaultActiveKey="/home">
         <Nav.Item>
           <Nav.Link eventKey="link-0">Add Recipe</Nav.Link>
