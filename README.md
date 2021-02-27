@@ -1,7 +1,7 @@
 # RecipEasyUI
 
 ## Getting started
-Clone this repository to your local machine and cd into the RecipEasyUI directory then run `npm install`.
+Clone this repository to your local machine and cd into the RecipEasyUI directory then run `make install`.
 ## Prerequisites
 You must have `node` and `npm` installed on your machine.
 ## Installing
@@ -11,4 +11,4 @@ Tests coming soon.
 ## Running the application
 Type `make run` into your terminal
 ## Built With (npm)
-React, Redux, CSS, Mongoose, MongoDB, Firebase, Deployed to Heroku.
+React, Redux, CSS, deployed to Heroku.

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { register } from '../../actions/auth';
 import './Register.css';
 
@@ -33,6 +33,10 @@ const Register = ({ register, isAuthenticated }) => {
 
   return (
     <div className="signup-form">
+      <div className="backButton">
+        <i class="fas fa-arrow-left"/>
+        <Link to="/" className="lead">Back</Link>
+      </div>
       <h1 className="large text-primary">Create Your Profile</h1>
       <p className="lead">Create and share your own recipes!</p>
       <form className="form" onSubmit={e => onSubmit(e)}>

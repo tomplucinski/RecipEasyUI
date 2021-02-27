@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
@@ -27,6 +27,10 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <div className="login-form">
+      <div className="backButton">
+        <i class="fas fa-arrow-left"/>
+        <Link to="/" className="lead">Back</Link>
+      </div>
       <h1 className="large text-primary">Sign In</h1>
       <p className="lead">
         <i className="fas fa-user"></i> Sign Into Your Account
