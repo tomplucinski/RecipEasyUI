@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { register } from '../../actions/auth';
+import { setAlert } from '../../actions/alert';
+import Alert from '../Alert'
 import './Register.css';
 
-const Register = ({ register, isAuthenticated }) => {
+const Register = ({ register, setAlert, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -21,7 +23,7 @@ const Register = ({ register, isAuthenticated }) => {
   const onSubmit = e => {
     e.preventDefault();
     if (password !== password2) {
-      console.log('password does not match');
+      setAlert('password does not match', 'danger');
     } else {
       register({ firstName, lastName, email, password });
     }
@@ -34,7 +36,7 @@ const Register = ({ register, isAuthenticated }) => {
   return (
     <div className="signup-form">
       <div className="backButton">
-        <i class="fas fa-arrow-left"/>
+        <i className="fas fa-arrow-left"/>
         <Link to="/" className="lead">Back</Link>
       </div>
       <h1 className="large text-primary">Create Your Profile</h1>
@@ -94,12 +96,13 @@ const Register = ({ register, isAuthenticated }) => {
         </div>
         <input type="submit" className="btn btn-primary" value="Create Profile" />
       </form>
+      <Alert />
     </div>
   );
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { register })(Register);
+export default connect(mapStateToProps, { register, setAlert })(Register);

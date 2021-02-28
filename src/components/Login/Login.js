@@ -28,7 +28,7 @@ const Login = ({ login, isAuthenticated }) => {
   return (
     <div className="login-form">
       <div className="backButton">
-        <i class="fas fa-arrow-left"/>
+        <i className="fas fa-arrow-left"/>
         <Link to="/" className="lead">Back</Link>
       </div>
       <h1 className="large text-primary">Sign In</h1>
