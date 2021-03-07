@@ -5,6 +5,7 @@ import { register } from '../../actions/auth';
 import { setAlert } from '../../actions/alert';
 import Alert from '../Alert'
 import './Register.css';
+import axios from 'axios';
 
 const Register = ({ register, setAlert, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,12 @@ const Register = ({ register, setAlert, isAuthenticated }) => {
     password: '',
     password2: '',
   });
+
+  const callPing = async() => {
+    const { data } = await axios.get(`https://recip-easy01.herokuapp.com/ping`);
+  }
+
+  callPing()
 
   const { firstName, lastName, email, password, password2 } = formData;
 
