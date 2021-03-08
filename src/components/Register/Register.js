@@ -16,12 +16,6 @@ const Register = ({ register, setAlert, isAuthenticated }) => {
     password2: '',
   });
 
-  const callPing = async() => {
-    const { data } = await axios.get(`https://recip-easy01.herokuapp.com/ping`);
-  }
-
-  callPing()
-
   const { firstName, lastName, email, password, password2 } = formData;
 
   const onChange = e =>
