@@ -33,6 +33,7 @@ export const register = ({ firstName, lastName, email, password }) => async disp
   const config = {
     headers: {
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://recip-easy01.herokuapp.com'
     }
   };
 
