@@ -39,7 +39,7 @@ export const register = ({ firstName, lastName, email, password }) => async disp
   const body = JSON.stringify({ firstName, lastName, email, password });
 
   try {
-    const { data } = await axios.post('https://recip-easy01.herokuapp.com/register', body, config);
+    const { data } = await axios.post(`${process.env.REACT_APP_API_HOST}/register`, body, config);
     
     dispatch({
       type: REGISTER_SUCCESS,
@@ -64,7 +64,7 @@ export const login = (email, password) => async dispatch => {
   const body = JSON.stringify({ email, password });
 
   try {
-    const { data } = await axios.post('https://recip-easy01.herokuapp.com/login', body, config)
+    const { data } = await axios.post(`${process.env.REACT_APP_API_HOST}/login`, body, config)
 
     dispatch({
       type: LOGIN_SUCCESS,

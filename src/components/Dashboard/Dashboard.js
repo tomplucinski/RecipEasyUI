@@ -2,18 +2,23 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Navbar from '../Navbar/Navbar'
+import AddRecipe from '../AddRecipe/AddRecipe'
+import './Dashboard.css'
 
 const Dashboard = ({ auth: { user } }) => {
-  const state = useState({
-    clicked: false
-  })
 
   return (
     <div>
       <Navbar />
-      <div className="container">
-        <h2 className="text-primary">Welcome {user && user.firstName || "Tom"}</h2>
-
+      <div className="dashboard-header">
+        <h2 className="text-primary">Welcome back, {user && user.firstName}!</h2>
+        <AddRecipe />
+        <div className="vegan-recipes">Vegan Recipes</div>
+        <div className="asian-recipes">Asian Recipes</div>
+        <div className="american-recipes">American Recipes</div>
+        <div className="italian-recipes">Italian Recipes</div>
+        <div className="greek-recipes">Greek Recipes</div>
+        <div className="mexican-recipes">Mexican Recipes</div>
       </div>
     </div>
   );
