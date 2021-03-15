@@ -5,7 +5,8 @@ import {
     LOGIN_SUCCESS,
     REGISTER_FAIL,
     LOGIN_FAIL,
-    LOGOUT
+    LOGOUT,
+    GET_PROFILE
   } from '../actions/types';
   
   const initialState = {
@@ -30,7 +31,9 @@ import {
 
       case LOGIN_SUCCESS:
       case REGISTER_SUCCESS:
+      case GET_PROFILE:
         localStorage.setItem('token', payload.token)
+        localStorage.setItem('id', payload.id)
         return {
           ...state,
           token: localStorage.getItem('token'),
@@ -44,12 +47,13 @@ import {
       case LOGIN_FAIL:
       case LOGOUT:
       localStorage.removeItem('token');
+      localStorage.removeItem('id')
       return {
         ...state,
         token: null,
         isAuthenticated: false,
         loading: false,
-        user: null,
+        user: null
       };
 
       default:
