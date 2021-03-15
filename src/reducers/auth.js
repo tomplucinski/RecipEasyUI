@@ -31,9 +31,9 @@ import {
 
       case LOGIN_SUCCESS:
       case REGISTER_SUCCESS:
-      case GET_PROFILE:
         localStorage.setItem('token', payload.token)
         localStorage.setItem('id', payload.id)
+      case GET_PROFILE:
         return {
           ...state,
           token: localStorage.getItem('token'),
