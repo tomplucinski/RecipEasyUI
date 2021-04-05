@@ -6,50 +6,54 @@ import './Dashboard.css'
 import { Link } from 'react-router-dom';
 import { getCurrentProfile } from '../../actions/profile';
 
-const Dashboard = ({ getCurrentProfile, auth: { user } }) => {
+const Dashboard = ({ getCurrentProfile, auth: { user, loading } }) => {
 
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile])
 
   return (
-    <div className="dashboard">
-      <Navbar />
-      <div className="dashboard-header">
-        <h2 className="text-primary">Welcome back, {user && user.firstName}!</h2>
-        <Link className="btn btn-primary" to="/add_recipe">Add New Recipe</Link>
+    <div>
+      {loading ? 
+      <div className="loader" /> : 
+      <div className="dashboard">
+        <Navbar />
+        <div className="dashboard-header">
+            <h2 className="text-primary">Welcome back, {user && user.firstName}!</h2>
+            <Link className="btn btn-primary" to="/add_recipe">Add New Recipe</Link>
+          </div>
+          <div className="vegan-recipes">
+            <div className="dark-overlay-dashboard">
+              <h2 className="text-recipes">Vegan Recipes</h2>
+            </div>
+          </div>
+          <div className="asian-recipes">
+            <div className="dark-overlay-dashboard">
+              <h2 className="text-recipes">Asian Recipes</h2>
+            </div>
+          </div>
+          <div className="american-recipes">
+            <div className="dark-overlay-dashboard">
+              <h2 className="text-recipes">American Recipes</h2>
+            </div>
+          </div>
+          <div className="italian-recipes">
+            <div className="dark-overlay-dashboard">
+              <h2 className="text-recipes">Italian Recipes</h2>
+            </div>
+          </div>
+          <div className="mediterranean-recipes">
+            <div className="dark-overlay-dashboard">
+              <h2 className="text-recipes">Mediterranean Recipes</h2>
+            </div>
+          </div>
+          <div className="mexican-recipes">
+            <div className="dark-overlay-dashboard">
+              <h2 className="text-recipes">Mexican Recipes</h2>
+            </div>
+          </div>
+        </div>}
       </div>
-      <div className="vegan-recipes">
-        <div className="dark-overlay-dashboard">
-          <h2 className="text-recipes">Vegan Recipes</h2>
-        </div>
-      </div>
-      <div className="asian-recipes">
-        <div className="dark-overlay-dashboard">
-          <h2 className="text-recipes">Asian Recipes</h2>
-        </div>
-      </div>
-      <div className="american-recipes">
-        <div className="dark-overlay-dashboard">
-          <h2 className="text-recipes">American Recipes</h2>
-        </div>
-      </div>
-      <div className="italian-recipes">
-        <div className="dark-overlay-dashboard">
-          <h2 className="text-recipes">Italian Recipes</h2>
-        </div>
-      </div>
-      <div className="mediterranean-recipes">
-        <div className="dark-overlay-dashboard">
-          <h2 className="text-recipes">Mediterranean Recipes</h2>
-        </div>
-      </div>
-      <div className="mexican-recipes">
-        <div className="dark-overlay-dashboard">
-          <h2 className="text-recipes">Mexican Recipes</h2>
-        </div>
-      </div>
-    </div>
   );
 };
 
