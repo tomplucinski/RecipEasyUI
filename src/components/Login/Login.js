@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
 import './Login.css'
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({ login, isAuthenticated, loading, user }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -70,6 +70,8 @@ Login.propTypes = {
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
+  loading: state.auth.loading,
+  user: state.auth.user
 });
 
 export default connect(mapStateToProps, { login })(Login);
